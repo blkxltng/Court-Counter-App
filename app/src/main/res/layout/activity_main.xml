@@ -137,6 +137,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/buttonReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -144,4 +145,20 @@
         android:onClick="resetScores"
         android:text="Reset"
         android:layout_marginBottom="32dp"/>
+
+    <TextView
+        android:id="@+id/scoreStatusView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttonReset"
+        android:layout_marginBottom="64dp"
+        android:textAlignment="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/buttonReset"
+        android:text="Game Over"
+        android:onClick="endGameSummary"/>
 </RelativeLayout>

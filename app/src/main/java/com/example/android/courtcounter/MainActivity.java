@@ -21,7 +21,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void displayForTeamA(int score) {
         TextView scoreView = (TextView) findViewById(R.id.team_a_score);
-        scoreView.setText(String.valueOf(score));
+        String scoreTeamA = String.valueOf(score);
+        scoreView.setText(scoreTeamA);
+        statusOfScores();
     }
 
     /**
@@ -53,7 +55,9 @@ public class MainActivity extends AppCompatActivity {
      */
     public void displayForTeamB(int score) {
         TextView scoreView = (TextView) findViewById(R.id.team_b_score);
-        scoreView.setText(String.valueOf(score));
+        String scoreTeamB = String.valueOf(score);
+        scoreView.setText(scoreTeamB);
+        statusOfScores();
     }
 
     /**
@@ -88,5 +92,50 @@ public class MainActivity extends AppCompatActivity {
         teamBScore = 0;
         displayForTeamA(teamAScore);
         displayForTeamB(teamBScore);
+    }
+
+    /**
+     * Tells the user which team is winning the game
+     */
+    public void statusOfScores() {
+        TextView scoreStatusView = (TextView) findViewById(R.id.scoreStatusView);
+        if (teamAScore == teamBScore && teamAScore != 0) {
+            String message = "Team A and Team B are tied.";
+            scoreStatusView.setText(message);
+        }
+
+        else if (teamAScore == teamBScore && teamAScore == 0) {
+            String message = "The game has just begun.";
+            scoreStatusView.setText(message);
+        }
+
+        else if (teamAScore > teamBScore) {
+            String message = "Team A is in the lead.";
+            scoreStatusView.setText(message);
+        }
+
+        else {
+            String message = "Team B is in the lead.";
+            scoreStatusView.setText(message);
+        }
+    }
+
+    /**
+     * Tells the user who the winner of the game is
+     */
+    public void endGameSummary(View view) {
+        TextView scoreStatusView = (TextView) findViewById(R.id.scoreStatusView);
+        if(teamAScore > teamBScore) {
+            String message = "Team A has won the game!";
+            scoreStatusView.setText(message);
+        }
+        else if (teamAScore < teamBScore) {
+            String message = "Team B has won the game!";
+            scoreStatusView.setText(message);
+        }
+        else {
+            String message = "Game cannot end in a tie. Please play until a team wins.";
+            scoreStatusView.setText(message);
+        }
     }
 }
